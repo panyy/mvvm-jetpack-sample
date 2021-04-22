@@ -1,24 +1,23 @@
-##androidx
-#kotlin
-#mvvm
-#koin
-#jetpack(livedata、viewmodel、lifecycle、viewbinding...)
-#buildsrc
-#coroutines
-#liveeventbus
-#isRunAlone
-#...
+### 相关内容
+* 组件化、支持模块单独运行
+* androidx
+* mvvm
+* kotlin
+* koin
+* jetpack(livedata、viewmodel、lifecycle、viewbinding、...)
+* buildsrc
+* coroutines
+* liveeventbus
+* ...
 
-## 如何检查依赖库的版本更新
+### APK下载体验
 
+### 如何检查依赖库的版本更新
 在项目的根目录下执行以下命令。
-
 ```
 ./gradlew dependencyUpdates
 ```
-
 会在当前目录下生成 build/dependencyUpdates/report.txt 文件，内容如下所示：
-
 ```
 The following dependencies have later release versions:
  - androidx.swiperefreshlayout:swiperefreshlayout [1.0.0 -> 1.1.0]
@@ -30,13 +29,10 @@ The following dependencies have later release versions:
  - org.koin:koin-android [2.1.5 -> 2.1.6]
  - org.koin:koin-androidx-viewmodel [2.1.5 -> 2.1.6]
  - org.koin:koin-core [2.1.5 -> 2.1.6]
-
 Gradle release-candidate updates:
  - Gradle: [6.1.1 -> 6.5.1]
 ```
-
 会列出所有需要更新的依赖库的最新版本，并且 Gradle Versions Plugin 比 AndroidStudio 所支持的更加全面：
-
 * 支持手动方式管理依赖库最新版本检查
 * 支持 ext 的方式管理依赖库最新版本检查
 * 支持 buildSrc 方式管理依赖库最新版本检查
