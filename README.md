@@ -10,6 +10,8 @@
 * liveeventbus
 * ...
 
+[项目用到的依赖库](https://github.com/panyy/mvvm-jetpack-sample/blob/master/buildSrc/src/main/java/Dependencies.kt)
+
 ### APK下载体验
 [https://www.pgyer.com/Ispr](https://www.pgyer.com/Ispr)
 
