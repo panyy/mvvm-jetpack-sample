@@ -11,7 +11,7 @@
 * ...
 
 ### APK下载体验
-[https://www.pgyer.com/Ispr]()
+[https://www.pgyer.com/Ispr](https://www.pgyer.com/Ispr)
 
 ### 如何检查依赖库的版本更新
 在项目的根目录下执行以下命令。
