@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.common.main">
+
+    <application>
+
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:label="视频列表" />
+
+        <meta-data
+            android:name="com.common.main.app.MainConfiguration"
+            android:value="ConfigModule" />
+
+    </application>
+</manifest>

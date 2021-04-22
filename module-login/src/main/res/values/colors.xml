@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="login_color_ffffff">#ffffff</color>
+    <color name="login_color_333333">#333333</color>
+    <color name="login_color_9b9b9b">#9b9b9b</color>
+    <color name="login_color_e7e7e7">#e7e7e7</color>
+    <color name="login_color_cccccc">#cccccc</color>
+    <color name="login_color_85bf00">#85bf00</color>
+
+</resources>

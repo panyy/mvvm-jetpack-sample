@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ToolBar高度 -->
+    <dimen name="toolbar_height">50dp</dimen>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.common.login">
+
+    <application>
+
+        <activity android:name=".ui.activity.LoginActivity" />
+
+        <meta-data
+            android:name="com.common.login.app.LoginConfiguration"
+            android:value="ConfigModule" />
+
+    </application>
+</manifest>

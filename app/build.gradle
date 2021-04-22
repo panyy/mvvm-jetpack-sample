@@ -1,0 +1,9 @@
+plugins {
+    id "com.common.plugin.app"
+}
+dependencies {
+    implementation project(':common-res')
+    implementation project(':module-login')
+    implementation project(':module-main')
+    implementation project(':module-web')
+}

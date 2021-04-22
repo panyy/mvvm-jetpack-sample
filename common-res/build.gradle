@@ -1,0 +1,67 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Versions.compileSdk
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+}
+dependencies {
+    api project(':common-core')
+    api Deps.tbssdk
+    api Deps.vlayout
+    api Deps.smartkey
+    api Deps.cardview
+    api Deps.titlebar
+    api Deps.autosize
+    api Deps.easyFloat
+    api Deps.rvAdapter
+    api Deps.bgaQrcode
+    api Deps.arouterApi
+    api Deps.mmkvStatic
+    api Deps.umengCommon
+    api Deps.umengUtdid
+    api Deps.immersionbar
+    api Deps.umengAnalytics
+    api Deps.ycbannerlib
+    api Deps.labelsView
+    api Deps.dropDownMenu
+    api Deps.filedownloader
+    api Deps.progressmanager
+    api Deps.pictureSelector
+    api Deps.androidPdfViewer
+    api Deps.circleProgressbar
+    api Deps.retrofitUrlManager
+    api Deps.bottomNavigationViewEx
+    api Deps.smartRefreshLayoutKernel
+    api Deps.smartRefreshHeaderClassics
+    api Deps.baseRecyclerViewAdapterHelper
+
+    kapt Deps.arouterCompiler
+
+    implementation Deps.xUpdate
+    implementation Deps.okhttputils
+
+    debugImplementation Deps.spidermanDebug
+    releaseImplementation Deps.spidermanRelease
+    //debugImplementation Deps.leakcanary
+}

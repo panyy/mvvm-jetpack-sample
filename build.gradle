@@ -1,0 +1,35 @@
+apply from: './buildSrc/build_version.gradle'
+buildscript {
+
+    ext.kotlin_version = '1.4.0'
+
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://dl.bintray.com/umsdk/release' }
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.20"
+        //Gradle Android Maven plugin
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        //This plugin is available from Bintray's JCenter repository and from the Gradle Plugin Portal
+        classpath "com.github.ben-manes:gradle-versions-plugin:0.36.0"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://dl.bintray.com/umsdk/release' }
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

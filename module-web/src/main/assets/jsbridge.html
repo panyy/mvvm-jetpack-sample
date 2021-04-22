@@ -1,0 +1,600 @@
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>
+        测试JsBridge
+    </title>
+    <script src="dsbridge.js"></script>
+</head>
+
+<body>
+<p>
+    <xmp id="show">
+    </xmp>
+</p>
+<p>
+    <input type="button" value="加载普通ToolBar" onclick="initWebPage();"/>
+</p>
+<p>
+    <input type="button" value="打开普通新页面" onclick="openNewPage();"/>
+</p>
+<p>
+    <input type="button" value="打开资源页面" onclick="openSource();"/>
+</p>
+<p>
+    <input type="button" value="打开Tab新页面" onclick="openTabPage();"/>
+</p>
+<p>
+    <input type="button" value="关闭当前页" onclick="closeCurrPage();"/>
+</p>
+<p>
+    <input type="button" value="关闭所有页" onclick="closeAllPage();"/>
+</p>
+<p>
+    <input type="button" value="关闭指定数量页面(2)" onclick="closeNumPage();"/>
+</p>
+<p>
+    <input type="button" value="显示Toast" onclick="showToast('我是显示的Toast');"/>
+</p>
+<p>
+    <input type="button" value="获取UserInfo" onclick="getUserInfo();"/>
+</p>
+<p>
+    <input type="button" value="选择图片" onclick="selectPictures();"/>
+</p>
+<p>
+    <input type="button" value="选择视频" onclick="selectVideos();"/>
+</p>
+<p>
+    <input type="button" value="扫描二维码" onclick="scanQrCode();"/>
+</p>
+<p>
+    <input type="button" value="发送事件" onclick="sendEvent();"/>
+</p>
+<p>
+    <input type="button" value="显示ProgressDialog" onclick="showProgressDialog();"/>
+</p>
+<p>
+    <input type="button" value="显示AlertDialog" onclick="showAlertDialog();"/>
+</p>
+<p>
+    <input type="button" value="取消加载对话框" onclick="dismissDialog();"/>
+</p>
+<p>
+    <input type="button" value="图片预览" onclick="picturePreview();"/>
+</p>
+<p>
+    <input type="button" value="分享链接" onclick="showShareDialog();"/>
+</p>
+<p>
+    <input type="button" value="拍照" onclick="takePicture();"/>
+</p>
+<p>
+    <input type="button" value="录音" onclick="showRecordDialog();"/>
+</p>
+<p>
+    <input type="button" value="软键盘显示或隐藏" onclick="toggleSoftInput();"/>
+</p>
+<p>
+    <input type="button" value="打开浏览器" onclick="openBrowser();"/>
+</p>
+<p>
+    <input type="button" value="拍摄视频" onclick="takeVideo();"/>
+</p>
+<p>
+    <input type="button" value="批注图片" onclick="annotationImage();"/>
+</p>
+<p>
+    <input type="button" value="刷新Tab页右侧按钮" onclick="refreshTabRightBtn();"/>
+    <input type="button" value="刷新Tab页右侧按钮1" onclick="refreshTabRightBtn1();"/>
+</p>
+<p>
+    <input type="button" value="阅读打卡" onclick="openClock();"/>
+</p>
+<p>
+    <input type="button" value="显示ScoreDialog" onclick="showScoreDialog();"/>
+</p>
+<p>
+    <input type="button" value="开始测评和测评记录" onclick="testOperation();"/>
+</p>
+<p>
+    <input type="button" value="前端页是否首次打开" onclick="isShowGuidePage();"/>
+</p>
+<p>
+    <input type="button" value="活动测评" onclick="testActivity();"/>
+</p>
+<p>
+    <input type="button" value="打开电子书" onclick="openBook();"/>
+</p>
+<p>
+    <input type="button" value="上传云空间" onclick="uploadMicroLesson();"/>
+</p>
+<p>
+    <input type="button" value="登出" onclick="logout();"/>
+</p>
+<p>
+    <input type="button" value="打开微课录制" onclick="openRecordLesson();"/>
+</p>
+<p>
+    <input type="button" value="保存本地数据" onclick="setData();"/>
+</p>
+<p>
+    <input type="button" value="获取本地数据" onclick="getData();"/>
+</p>
+<p>
+    <input type="button" value="批注图片" onclick="annotationImage();"/>
+</p>
+</body>
+<script>
+		function initWebPage() {
+			var data = {
+                          "toolbar": {
+                            "visible": "true",
+                            "bgcolor": "#000000",
+                            "title": {
+                              "content": "个人信息",
+                              "textsize": "12",
+                              "textcolor": "#000000"
+                            },"btnleft": {
+                                "data": "backevent"
+                            },
+                            "btnright": {
+                              "name": "发布",
+                              "data": "release",
+                              "newpage": "false"
+                            },
+                            "btnmore": [
+                              {
+                                "name": "编辑",
+                                "data": "http://www.tfedu.com?questionId = 123",
+                                "newpage": "true"
+                              },
+                              {
+                                "name": "删除",
+                                "data": "javascript:callDelete(123)",
+                                "newpage": "false"
+                              },
+                              {
+                                "name": "刷新",
+                                "data": "javascript:callRefresh()",
+                                "newpage": "false"
+                              },
+                              {
+                                "name": "扫一扫",
+                                "data": "scanQrCode",
+                                "newpage": "false"
+                              }
+                            ],
+                            "btnback": {
+                            },
+                            "btnsearch": {
+                            }
+                          }
+                        };
+
+            dsBridge.call("initWebPage", data);
+		}
+
+		function openNewPage() {
+			 var data = {
+                          "data": "http://www.tfedu.com?questionId = 123",
+                          "closenumpage": 1
+                        };
+             dsBridge.call("openNewPage", data);
+		}
+
+        function openSource() {
+            var data = {
+                "data": "http://www.tfedu.com?questionId = 123",
+                "type": ""
+            };
+            dsBridge.call("openSource", data);
+        }
+
+		function closeCurrPage() {
+		    dsBridge.call("closeCurrPage");
+		}
+
+		function closeAllPage() {
+		    dsBridge.call("closeAllPage");
+		}
+
+        function showToast(message) {
+			 var data = {
+                            "data": message
+                        };
+             dsBridge.call("showToast",data);
+		}
+
+		function getUserInfo() {
+		alert(dsBridge.call("getUserInfo",""));
+		    document.getElementById("show").innerHTML = "UserInfo = "+dsBridge.call("getUserInfo","");
+		}
+
+        function selectPictures() {
+            var data = {
+                            "compress": true,                     // 可选: 默认true 是否压缩
+                            "cropCompressQuality": 100,           // 可选：默认100  裁剪压缩质量
+                            "enableCrop": true,                   // 可选：默认true 是否裁剪
+                            "hideBottomControls": true,           // 可选：默认true 是否显示uCrop工具栏，默认不显示
+                            "imageSpanCount": 4,                  // 可选：默认4    每行显示个数
+                            "isCamera": true,                     // 可选：默认true 是否显示拍照按钮
+                            "maxSelectNum": 6,                    // 可选：默认6    最大选择数量
+                            "minSelectNum": 1,                    // 可选：默认1    最小选择数量
+                            "minimumCompressSize": 100,           // 可选：默认100  小于多少kb的图片不压缩
+                            "openClickSound": true,               // 可选：默认true 是否开启点击声音
+                            "previewImage": true,                 // 可选：默认true 是否可预览
+                            "rotateEnabled": true,                // 可选：默认true 裁剪是否可旋转图片
+                            "scaleEnabled": true,                 // 可选：默认true 裁剪是否可放大缩小图片
+                            "selectionMode": 2,                   // 可选：默认2    1=单选,2=多选
+                            "showCropFrame": true,                // 可选：默认true 是否显示裁剪矩形边框
+                            "showCropGrid": true,                 // 可选：默认true 是否显示裁剪矩形网格
+                            "withAspectRatio": "1:1"              // 可选：默认1:1  裁剪比例如16:9 3:2 1:1可自定义
+                        };
+		    dsBridge.call(
+                'qiNiuSelectPictures'
+                ,{}
+                ,function(responseData) {
+                    document.getElementById("show").innerHTML = "selectPictures = " + responseData;
+                }
+            );
+		}
+
+        function scanQrCode() {
+		    dsBridge.call(
+                'scanQrCode'
+                ,function(responseData) {
+                    document.getElementById("show").innerHTML = "scanQrCode = " + responseData;
+                }
+            );
+		}
+
+
+		function sendEvent() {
+		    var data = {
+                            "tag": "file:///android_asset/jsbridge.html",
+                            "event": "updatelist",
+                            "args": {
+                                "arg1": 1,
+                                "arg2": 2,
+                                "arg3": 3
+                            }
+                        };
+             dsBridge.call("sendEvent", data);
+		}
+
+        dsBridge.register('updatelist', function (v) {
+            document.getElementById("show").innerHTML = "updatelist = " + JSON.stringify(v);
+        })
+        
+        dsBridge.register('backevent', function (v) {
+                          document.getElementById("show").innerHTML = "backevent = " + JSON.stringify(v);
+                          })
+        dsBridge.register('release', function (v) {
+            sendEvent();
+        })
+
+        function selectVideos() {
+                var data = {
+                        "imageSpanCount": 4,                  // 可选：默认4    每行显示个数
+                        "isCamera": false,                    // 可选：默认false 是否显示拍照按钮
+                        "maxSelectNum": 1,                    // 可选：默认1    最大选择数量
+                        "minSelectNum": 1,                    // 可选：默认1    最小选择数量
+                        "openClickSound": true,               // 可选：默认true 是否开启点击声音
+                        "selectionMode": 1,                   // 可选：默认1    1=单选,2=多选
+                        "previewImage": true                  // 可选：默认true 是否可预览
+                    }
+                dsBridge.call(
+                'qiNiuSelectVideos'
+                ,data
+                ,function(responseData) {
+                    document.getElementById("show").innerHTML = "selectVideos = " + responseData;
+                }
+            );
+		}
+
+        function showProgressDialog() {
+		     var data = {
+                            "type": "progressdialog",
+                            "title": "请稍等",
+                            "message": "正在发布..."
+                        };
+             dsBridge.call("showDialog", data);
+		}
+
+        function showAlertDialog() {
+		     var data = {
+                            "type": "alertdialog",
+                            "title": "提示",
+                            "message": "你还没有完成全部测评",
+                            "messageDetial": "确定要退出吗？",
+                            "buttons": [
+                                {
+                                    "name": "确定",
+                                    "data": "confirm",
+                                    "newpage": "false"
+                                },
+                                {
+                                    "name": "取消",
+                                    "data": "cancel",
+                                    "newpage": "false"
+                                }
+                            ]
+                        };
+             dsBridge.call("showDialog", data);
+		}
+
+		function dismissDialog() {
+		     var data = {
+                            "type": "progressdialog"
+                        };
+             dsBridge.call("dismissDialog", data);
+		}
+
+		function showShareDialog() {
+		     var data = {
+                            "type": "link",
+                            "title": "错题本",
+                            "des": "错题本描述",
+                            "url": "http://final.tfedu.net/nor/2008932584628/4d3590b00fe9c16ab0e40d5d44a3f97d/base/work/wrongbook/2019/12191456255625.pdf"
+                        };
+             dsBridge.call("showShareDialog", data);
+		}
+
+		function closeNumPage() {
+		     var data = {
+                            "num": 2
+                        };
+             dsBridge.call("closeNumPage", data);
+		}
+
+		function picturePreview() {
+		     var data = {
+                            "position": 1,
+                            "urls":"http://t2.hddhhn.com/uploads/tu/201310/130/1.jpg,http://t2.hddhhn.com/uploads/tu/201310/162/1.jpg,http://t2.hddhhn.com/uploads/tu/201310/177/1.jpg,http://t2.hddhhn.com/uploads/tu/201310/185/1.jpg,http://t2.hddhhn.com/uploads/tu/201310/234/1.jpg"
+                        };
+             dsBridge.call("picturePreview", data);
+		}
+
+		function openTabPage() {
+                          var data = {
+                                        "tabs": [
+                                            {
+                                              "name": "天猫",
+                                              "url": "http://www.tianmao.com"
+                                            },
+                                            {
+                                              "name": "京东",
+                                              "url": "file:///android_asset/jsbridge.html"
+                                            }
+                                          ],
+                                        "closenumpage": 0
+                                      };
+             dsBridge.call("openTabPage", data);
+		}
+
+        function takePicture() {
+		     var data = {
+                            "compress": true,                     // 可选: 默认true 是否压缩
+                            "cropCompressQuality": 100,           // 可选：默认100  裁剪压缩质量
+                            "enableCrop": true,                   // 可选：默认true 是否裁剪
+                            "hideBottomControls": true,           // 可选：默认true 是否显示uCrop工具栏，默认不显示
+                            "minimumCompressSize": 100,           // 可选：默认100  小于多少kb的图片不压缩
+                            "showCropGrid": true,                 // 可选：默认true 是否显示裁剪矩形网格
+                            "rotateEnabled": true,                // 可选：默认true 裁剪是否可旋转图片
+                            "scaleEnabled": true,                 // 可选：默认true 裁剪是否可放大缩小图片
+                            "showCropFrame": true,                // 可选：默认true 是否显示裁剪矩形边框
+                            "withAspectRatio": "1:1"              // 可选：默认1:1  裁剪比例如16:9 3:2 1:1可自定义
+                        };
+		    dsBridge.call(
+                'qiNiuTakePicture'
+                ,data
+                ,function(responseData) {
+                    document.getElementById("show").innerHTML = "takePicture = " + responseData;
+                }
+            );
+		}
+
+        function showRecordDialog() {
+		     var data = {
+                            "duration": "30",
+                            "platform": "xuetang"
+                        };
+             dsBridge.call(
+                'qiNiuShowRecordDialog'
+                ,data
+                ,function(responseData) {
+                    document.getElementById("show").innerHTML = "showRecordDialog = " + responseData;
+                }
+            );
+		}
+
+
+        function toggleSoftInput() {
+		    dsBridge.call("toggleSoftInput");
+		}
+
+        function openBrowser() {
+			 var data = {
+                            "url": "http://www.baidu.com/"
+                        };
+             dsBridge.call("openBrowser", data);
+		}
+
+
+        function takeVideo() {
+		     var data = {
+                            "duration": "120"    //可选：默认时长60秒
+                        };
+		    dsBridge.call(
+                'qiNiuTakeVideo'
+                ,data
+                ,function(responseData) {
+                    document.getElementById("show").innerHTML = "takeVideo = " + responseData;
+                }
+            );
+		}
+
+		function annotationImage() {
+		     var data = {
+                            "imageUrl": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1538038840886&di=16c9d5f5525db0c447e5a64167562206&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180909%2Fec3c72777b04457692625191a6204127.jpeg"
+                            //,"text":"你好你好你好你好你好你好你好你好你好你好HelloHelloHelloHelloHelloHelloHelloHelloHelloHello"
+                        };
+		    dsBridge.call(
+                'annotationImage'
+                ,data
+                ,function(responseData) {
+                    document.getElementById("show").innerHTML = "annotationImage = " + responseData;
+                }
+            );
+		}
+
+		function refreshTabRightBtn() {
+			   var data = {
+                          "btnrights": [
+                            {
+                              "name": "发布",
+                              "data": "release"
+                            },
+                            {
+                              "name": "发布1",
+                              "data": "release1"
+                            }
+                          ]
+                        };
+             dsBridge.call("refreshTabRightBtn", data);
+		}
+
+		function refreshTabRightBtn1() {
+			   var data = {
+                          "btnrights": [
+                            {
+                              "name": "发布",
+                              "data": "release"
+                            },
+                            {
+                              "name": "发布2",
+                              "data": "release2"
+                            }
+                          ]
+                        };
+             dsBridge.call("refreshTabRightBtn", data);
+		}
+
+        function openClock() {
+              var data = {
+                            "id":123,
+                            "releaseId":123,
+                            "taskId":123,
+                            "readId":123
+                        };
+              dsBridge.call('openClock',
+                             data,
+                             function(responseData) {
+                                 document.getElementById("show").innerHTML = "openClock = " + responseData
+                             });
+		}
+
+        function showScoreDialog() {
+		     var data = {
+                            "score": "98"
+                        };
+             dsBridge.call("showScoreDialog", data);
+		}
+
+		function testOperation() {
+		     var data = {
+                            "type": "testStart",//testStart
+                            "bookId": "327133298078580736",
+                            "testRecordId": "440186648131207168"
+                        };
+             dsBridge.call('testOperation',
+                            data,
+                            function(responseData) {
+                                document.getElementById("show").innerHTML = "testOperation = " + responseData
+                            });
+		}
+
+
+        function isShowGuidePage() {
+                alert(dsBridge.call("isShowGuidePage","testPage"));
+		}
+
+		function testActivity() {
+                var data = {
+                                "type": "testStart",
+                                "bookId": "317776063900483584",
+                                "activityId": "331545263135850496"
+                            }
+                dsBridge.call(
+                'testActivity'
+                ,data
+                ,function(responseData) {
+                    document.getElementById("show").innerHTML = "testActivity = " + responseData;
+                }
+            );
+		}
+
+        function openBook() {
+		     var data = {
+                            "bookId": "2150",
+                            "formatType": "epub",
+                            "bookUrl": "http://final.tfedu.net/nor/3001234567890/79800921dce2bf04b408ad9fed31213f/reading/book/adf/epub/EB128.epub"
+                        };
+             dsBridge.call("openBook", data);
+		}
+
+		function uploadMicroLesson() {
+		     var data = {
+                            "bookId": "2150"
+                        };
+             dsBridge.call("uploadMicroLesson", data);
+		}
+
+		function logout() {
+            dsBridge.call("logout");
+        }
+
+        function openRecordLesson() {
+              dsBridge.call('openRecordLesson',
+                             '',
+                             function(responseData) {
+                                 document.getElementById("show").innerHTML = "openRecordLesson = " + responseData
+                             });
+		}
+
+		function setData() {
+		     var data = {
+                            "key": "abc",
+                            "value": "xyz"
+                        };
+             dsBridge.call("setData", data);
+		}
+
+		function getData() {
+             var value = dsBridge.call("getData", "abc");
+             document.getElementById("show").innerHTML = "getData = " + value
+		}
+
+        function annotationImage() {
+		     var data = {
+                            "imageUrl": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1538038840886&di=16c9d5f5525db0c447e5a64167562206&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180909%2Fec3c72777b04457692625191a6204127.jpeg"
+                            //,"text":"你好你好你好你好你好你好你好你好你好你好HelloHelloHelloHelloHelloHelloHelloHelloHelloHello"
+                        };
+		    dsBridge.call(
+                'annotationImage'
+                ,data
+                ,function(responseData) {
+                    document.getElementById("show").innerHTML = "annotationImage = " + responseData;
+                }
+            );
+		}
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,84 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Versions.compileSdk
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+}
+dependencies {
+    //coroutines
+    api Deps.kotlinxCoroutinesCore
+    api Deps.kotlinxCoroutinesAndroid
+    //koin
+    api Deps.koinAndroid
+    api Deps.koinAndroidxScope
+    api Deps.koinAndroidxViewmodel
+    //anko
+    api Deps.anko
+    api Deps.ankoCommon
+    api Deps.kotlinStdlibJdk7
+    //androidx
+    api Deps.design
+    api Deps.coreKtx
+    api Deps.fragmentKtx
+    api Deps.annotationX
+    api Deps.appcompat
+    api Deps.recyclerview
+    api Deps.constraintlayout
+    //live bus
+    api Deps.liveEventBusX
+    //room
+    api Deps.room
+    api Deps.roomKtx
+    kapt Deps.roomCompiler
+    //lifecycle
+    api Deps.lifecycleLivedataKtx
+    api Deps.lifecycleViewmodelKtx
+    api Deps.lifecycleRuntimeKtx
+    api Deps.lifecycleViewmodelSavedstate
+    //view
+    api Deps.lottie
+    api Deps.loadsir
+    api Deps.smartShowAll
+    //rx
+    api Deps.rxjava2
+    api Deps.rxandroid2
+    api Deps.rxcache2
+    api Deps.rxlifecycle2
+    api Deps.rxlifecycle2Android
+    api Deps.rxpermissions2
+    api Deps.rxerrorhandler2
+    //network
+    api Deps.okhttp
+    api Deps.retrofit
+    api Deps.retrofitConverterGson
+    api Deps.retrofitAdapterRxjava2
+    api Deps.glide
+    kapt Deps.glideCompiler
+    //viewbinding
+    api Deps.viewbindingKtx
+    api Deps.viewbindingBaseKtx
+    api Deps.viewbindingBrvahKtx
+    //tools
+    api Deps.gson
+    api Deps.jolyglotGson
+    api Deps.dagger2
+    api Deps.butterknife
+    kapt Deps.dagger2Compiler
+    compileOnly Deps.javaxAnnotation
+    //test
+    api Deps.timber
+}

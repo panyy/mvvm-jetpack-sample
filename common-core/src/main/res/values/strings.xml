@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">arms</string>
+    <string name="base_message_empty">暂无数据~</string>
+    <string name="base_message_error">网络异常,点击空白处重试</string>
+</resources>
