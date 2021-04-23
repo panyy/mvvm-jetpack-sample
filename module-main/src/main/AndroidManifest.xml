@@ -6,7 +6,7 @@
 
         <activity
             android:name=".ui.activity.MainActivity"
-            android:label="视频列表" />
+            android:label="文章列表" />
 
         <meta-data
             android:name="com.common.main.app.MainConfiguration"

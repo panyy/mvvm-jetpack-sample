@@ -10,8 +10,7 @@ class ArticleAdapter : BaseBindingQuickAdapter<ArticleEntity, ItemArticleListLay
     override fun convert(holder: BaseBindingHolder, item: ArticleEntity) {
         holder.getViewBinding<ItemArticleListLayoutBinding>().apply {
             tvName.text = "${holder.adapterPosition + 1}.${item.title}"
-            ivCover.load("https://wanandroid.com/blogimgs/8a0131ac-05b7-4b6c-a8d0-f438678834ba.png")
+            ivCover.load("https://www.wanandroid.com/blogimgs/62c1bd68-b5f3-4a3c-a649-7ca8c7dfabe6.png")
         }
     }
-
 }
